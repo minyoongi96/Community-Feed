@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UserServiceTest {
+class UserServiceTest {
 
     private final UserRepository userRepository = new FakeUserRepository();
     private final UserService userService = new UserService(userRepository);
