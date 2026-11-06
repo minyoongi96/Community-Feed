@@ -23,6 +23,7 @@ public class UserRelationService {
         }
 
         user.follow(targetUser);
+        userRelationRepository.save(user, targetUser);
     }
 
     public void unfollow(FollowUserRequestDto dto) {
