@@ -25,7 +25,7 @@ public class PostService {
 
     public Post getPost(Long id) {
 
-        return postRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        return postRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }
 
     public Post createPost(CreatePostRequestDto dto) {
