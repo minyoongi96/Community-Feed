@@ -1,5 +1,6 @@
 package org.demo.user.application;
 
+import org.demo.fake.FakeObjectFactory;
 import org.demo.user.application.Interface.UserRelationRepository;
 import org.demo.user.application.Interface.UserRepository;
 import org.demo.user.application.dto.CreateUserRequestDto;
@@ -15,10 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UserRelationServiceTest {
 
-    private final UserRepository userRepository = new FakeUserRepository();
-    private final UserRelationRepository userRelationRepository = new FakeUserRelationRepository();
-    private final UserService userService = new UserService(userRepository);
-    private final UserRelationService userRelationService = new UserRelationService(userService, userRelationRepository);
+    private final UserService userService = FakeObjectFactory.getUserService();
+    private final UserRelationService userRelationService = FakeObjectFactory.getUserRelationService();
 
     private User user1;
     private User user2;
