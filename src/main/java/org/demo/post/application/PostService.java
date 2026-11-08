@@ -3,7 +3,7 @@ package org.demo.post.application;
 import org.demo.post.application.Interface.LikeRepository;
 import org.demo.post.application.Interface.PostRepository;
 import org.demo.post.application.dto.CreatePostRequestDto;
-import org.demo.post.application.dto.LikePostRequestDto;
+import org.demo.post.application.dto.LikeRequestDto;
 import org.demo.post.application.dto.UpdatePostRequestDto;
 import org.demo.post.domain.Post;
 import org.demo.post.domain.content.Content;
@@ -45,9 +45,9 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public void likePost(LikePostRequestDto dto) {
+    public void likePost(LikeRequestDto dto) {
         User user = userService.getUser(dto.userId());
-        Post post = getPost(dto.postId());
+        Post post = getPost(dto.targetId());
 
         if(likeRepository.checkLike(post, user)) {
             throw new IllegalArgumentException();
@@ -57,9 +57,9 @@ public class PostService {
         likeRepository.save(post, user);
     }
 
-    public void unlikePost(LikePostRequestDto dto) {
+    public void unlikePost(LikeRequestDto dto) {
         User user = userService.getUser(dto.userId());
-        Post post = getPost(dto.postId());
+        Post post = getPost(dto.targetId());
 
         if(likeRepository.checkLike(post, user)) {
             post.unlike(user);
