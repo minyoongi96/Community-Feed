@@ -55,7 +55,7 @@ public class CommentSerivce {
         }
 
         comment.like(user);
-        likeRepository.save(comment, user);
+        likeRepository.like(comment, user);
     }
 
     public void unlikeComment(LikeRequestDto dto){

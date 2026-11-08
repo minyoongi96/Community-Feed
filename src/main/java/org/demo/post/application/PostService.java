@@ -54,7 +54,7 @@ public class PostService {
         }
 
         post.like(user);
-        likeRepository.save(post, user);
+        likeRepository.like(post, user);
     }
 
     public void unlikePost(LikeRequestDto dto) {
