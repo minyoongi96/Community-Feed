@@ -51,7 +51,7 @@ public class CommentSerivce {
         Comment comment = getComment(dto.targetId());
 
         if(likeRepository.checkLike(comment, user)){
-            throw new IllegalArgumentException();
+            return;
         }
 
         comment.like(user);
