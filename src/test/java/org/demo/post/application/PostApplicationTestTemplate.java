@@ -23,4 +23,3 @@ public class PostApplicationTestTemplate {
     String commentConentText = "comment content";
     CreateCommentRequestDto commentRequestDto = new CreateCommentRequestDto(post.getId(), user.getId(), commentConentText);
 }
-가
