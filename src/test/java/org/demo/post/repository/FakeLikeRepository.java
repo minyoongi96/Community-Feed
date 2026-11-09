@@ -6,6 +6,7 @@ import org.demo.post.domain.comment.Comment;
 import org.demo.user.domain.User;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,7 +27,8 @@ public class FakeLikeRepository implements LikeRepository {
     public void like(Post post, User user) {
         Set<User> users = postLikes.get(post);
         if(users == null) {
-            users = Set.of(user);
+            users = new HashSet<>();
+            users.add(user);
         } else {
             users.add(user);
         }
@@ -57,7 +59,8 @@ public class FakeLikeRepository implements LikeRepository {
     public void like(Comment comment, User user) {
         Set<User> users = commentLikes.get(comment);
         if(users == null) {
-            users = Set.of(user);
+            users = new HashSet<>();
+            users.add(user);
         } else {
             users.add(user);
         }

@@ -18,7 +18,7 @@ public class FakePostRepository implements PostRepository {
         }
 
         long id = store.size() + 1;
-        Post newPost = new Post(id, post.getAuthor(),post.getContentObject());
+        Post newPost = new Post(id, post.getAuthor(), post.getContentObject());
         store.put(id, newPost);
 
         return newPost;
