@@ -1,9 +1,15 @@
 package org.demo.user.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import org.demo.common.domain.PositiveIntegerCounter;
 
 import java.util.Objects;
 
+@Builder
+@Getter
+@AllArgsConstructor
 public class User {
 
     private final Long id;
@@ -28,7 +34,7 @@ public class User {
         }
 
         followingCount.increase();
-        targetUser.increaseFolloerCount();
+        targetUser.increaseFollowerCount();
     }
 
     public void unfollow(User targetUser) {
@@ -37,14 +43,14 @@ public class User {
         }
 
         followingCount.decrease();
-        targetUser.decreaseFolloerCount();
+        targetUser.decreaseFollowerCount();
     }
 
-    private void increaseFolloerCount() {
+    private void increaseFollowerCount() {
         followerCount.increase();
     }
 
-    private void decreaseFolloerCount() {
+    private void decreaseFollowerCount() {
         followerCount.decrease();
     }
 
@@ -61,19 +67,19 @@ public class User {
         return Objects.hashCode(id);
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public UserInfo getInfo() {
-        return info;
-    }
-
     public int getFollowingCount() {
         return followingCount.getCount();
     }
 
     public int getFollowerCount() {
         return followerCount.getCount();
+    }
+
+    public String getProfileImageUrl() {
+        return info.getProfileImageUrl();
+    }
+
+    public String getName() {
+        return info.getName();
     }
 }

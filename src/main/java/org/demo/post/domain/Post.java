@@ -1,11 +1,17 @@
 package org.demo.post.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import org.demo.common.domain.PositiveIntegerCounter;
 import org.demo.post.domain.content.Content;
 import org.demo.post.domain.content.PostContent;
 import org.demo.post.domain.content.PostPublicationState;
 import org.demo.user.domain.User;
 
+@Builder
+@Getter
+@AllArgsConstructor
 public class Post {
 
     private final Long id;
@@ -53,14 +59,6 @@ public class Post {
 
         this.state = state;
         this.content.updateContent(updateContent);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public User getAuthor() {
-        return author;
     }
 
     public int getLikeCount() {

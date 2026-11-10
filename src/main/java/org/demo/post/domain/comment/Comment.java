@@ -1,10 +1,16 @@
 package org.demo.post.domain.comment;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import org.demo.common.domain.PositiveIntegerCounter;
 import org.demo.post.domain.Post;
 import org.demo.post.domain.content.Content;
 import org.demo.user.domain.User;
 
+@Builder
+@Getter
+@AllArgsConstructor
 public class Comment {
 
     private final Long id;
@@ -55,18 +61,6 @@ public class Comment {
         }
 
         this.content.updateContent(updateContent);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public User getAuthor() {
-        return author;
     }
 
     public String getContent() {
