@@ -6,6 +6,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.demo.common.repository.entity.TimeBaseEntity;
 import org.demo.post.domain.Post;
 import org.demo.post.domain.comment.Comment;
 import org.demo.user.domain.User;
@@ -15,7 +16,7 @@ import org.demo.user.domain.User;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class LikeEntity {
+public class LikeEntity extends TimeBaseEntity {
 
     @EmbeddedId
     private LikeEntityId id;
