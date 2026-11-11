@@ -1,4 +1,4 @@
-package org.demo.post.repository.entity;
+package org.demo.post.repository.entity.post;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

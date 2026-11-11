@@ -1,4 +1,4 @@
-package org.demo.post.repository.entity;
+package org.demo.post.repository.entity.comment;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.demo.common.domain.PositiveIntegerCounter;
 import org.demo.post.domain.comment.Comment;
 import org.demo.post.domain.content.CommentContent;
-import org.demo.user.domain.User;
+import org.demo.post.repository.entity.post.PostEntity;
 import org.demo.user.repository.entity.UserEntity;
 
 @Entity
