@@ -6,7 +6,11 @@ import java.util.List;
 
 public interface JpaUserRepositoryCustom {
 
-    List<GetUserListResponseDto> getFollowingUserList(Long userId, Long lastFollowingId);
+    List<GetUserListResponseDto> getFollowingUserList(Long userId);
 
-    List<GetUserListResponseDto> getFollowerUserList(Long userId, Long lastFollowerId);
+    List<GetUserListResponseDto> getFollowerUserList(Long userId);
+
+    List<GetUserListResponseDto> getFollowingUserListWithPaging(Long userId, Long lastFollowingId);
+
+    List<GetUserListResponseDto> getFollowerUserListWithPaging(Long userId, Long lastFollowerId);
 }

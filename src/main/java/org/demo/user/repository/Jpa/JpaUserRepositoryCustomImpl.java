@@ -21,7 +21,7 @@ public class JpaUserRepositoryCustomImpl implements JpaUserRepositoryCustom {
     QUserRelationEntity userRelation = QUserRelationEntity.userRelationEntity;
 
     @Override
-    public List<GetUserListResponseDto> getFollowingUserList(Long userId, Long lastFollowingId) {
+    public List<GetUserListResponseDto> getFollowingUserList(Long userId) {
         return queryFactory
                 .select(Projections.constructor(
                         GetUserListResponseDto.class,
@@ -29,7 +29,41 @@ public class JpaUserRepositoryCustomImpl implements JpaUserRepositoryCustom {
                         user.profileImageUrl
                 ))
                 .from(userRelation)
-                .join(user).on(userRelation.followingUserId.eq(userId))
+                .join(user).on(userRelation.followerUserId.eq(user.id))
+                .where(
+                        userRelation.followingUserId.eq(userId)
+                )
+                .orderBy(user.id.desc())
+                .fetch();
+    }
+
+    @Override
+    public List<GetUserListResponseDto> getFollowerUserList(Long userId) {
+        return queryFactory
+                .select(Projections.constructor(
+                        GetUserListResponseDto.class,
+                        user.name,
+                        user.profileImageUrl
+                ))
+                .from(userRelation)
+                .join(user).on(userRelation.followingUserId.eq(user.id))
+                .where(
+                        userRelation.followerUserId.eq(userId)
+                )
+                .orderBy(user.id.desc())
+                .fetch();
+    }
+
+    @Override
+    public List<GetUserListResponseDto> getFollowingUserListWithPaging(Long userId, Long lastFollowingId) {
+        return queryFactory
+                .select(Projections.constructor(
+                        GetUserListResponseDto.class,
+                        user.name,
+                        user.profileImageUrl
+                ))
+                .from(userRelation)
+                .join(user).on(userRelation.followerUserId.eq(user.id))
                 .where(
                         userRelation.followingUserId.eq(userId),
                         hasLastData(lastFollowingId)
@@ -40,7 +74,7 @@ public class JpaUserRepositoryCustomImpl implements JpaUserRepositoryCustom {
     }
 
     @Override
-    public List<GetUserListResponseDto> getFollowerUserList(Long userId, Long lastFollowerId) {
+    public List<GetUserListResponseDto> getFollowerUserListWithPaging(Long userId, Long lastFollowerId) {
         return queryFactory
                 .select(Projections.constructor(
                         GetUserListResponseDto.class,
@@ -48,7 +82,7 @@ public class JpaUserRepositoryCustomImpl implements JpaUserRepositoryCustom {
                         user.profileImageUrl
                 ))
                 .from(userRelation)
-                .join(user).on(userRelation.followerUserId.eq(userId))
+                .join(user).on(userRelation.followingUserId.eq(user.id))
                 .where(
                         userRelation.followerUserId.eq(userId),
                         hasLastData(lastFollowerId)

@@ -7,12 +7,14 @@ import lombok.NoArgsConstructor;
 import org.demo.common.domain.PositiveIntegerCounter;
 import org.demo.common.repository.entity.TimeBaseEntity;
 import org.demo.user.domain.User;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "community_user")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@DynamicUpdate
 public class UserEntity extends TimeBaseEntity {
 
     @Id
