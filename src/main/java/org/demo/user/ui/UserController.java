@@ -8,7 +8,6 @@ import org.demo.user.application.dto.GetUserListResponseDto;
 import org.demo.user.application.dto.GetUserResponseDto;
 import org.demo.user.domain.User;
 import org.demo.user.repository.Jpa.JpaUserRepository;
-import org.demo.user.repository.Jpa.JpaUserRepositoryCustom;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
