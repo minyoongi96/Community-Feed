@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.demo.common.domain.PositiveIntegerCounter;
+import org.demo.common.repository.entity.TimeBaseEntity;
 import org.demo.post.domain.comment.Comment;
 import org.demo.post.domain.content.CommentContent;
 import org.demo.post.repository.entity.post.PostEntity;
@@ -15,7 +16,7 @@ import org.demo.user.repository.entity.UserEntity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class CommentEntity {
+public class CommentEntity extends TimeBaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +34,7 @@ public class CommentEntity {
     private Integer likeCount;
 
     public CommentEntity(Comment comment) {
+        this.id = comment.getId();
         this.author = new UserEntity(comment.getAuthor());
         this.post = new PostEntity(comment.getPost());
         this.content = comment.getContent();
