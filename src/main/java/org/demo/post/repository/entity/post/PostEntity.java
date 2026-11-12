@@ -49,7 +49,4 @@ public class PostEntity extends TimeBaseEntity {
                 .state(state)
                 .build();
     }
-
-
-
 }

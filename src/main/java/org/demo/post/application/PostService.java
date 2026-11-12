@@ -1,15 +1,19 @@
 package org.demo.post.application;
 
+import jakarta.transaction.Transactional;
 import org.demo.post.application.Interface.LikeRepository;
 import org.demo.post.application.Interface.PostRepository;
 import org.demo.post.application.dto.CreatePostRequestDto;
 import org.demo.post.application.dto.LikeRequestDto;
+import org.demo.post.application.dto.UpdatePostRequestDto;
 import org.demo.post.domain.Post;
 import org.demo.post.domain.content.Content;
 import org.demo.post.domain.content.PostContent;
 import org.demo.user.application.UserService;
 import org.demo.user.domain.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PostService {
 
     private final PostRepository postRepository;
@@ -24,7 +28,7 @@ public class PostService {
 
     public Post getPost(Long id) {
 
-        return postRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+        return postRepository.findById(id);
     }
 
     public Post createPost(CreatePostRequestDto dto) {
@@ -35,7 +39,7 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public Post updatePost(Long id, CreatePostRequestDto dto) {
+    public Post updatePost(Long id, UpdatePostRequestDto dto) {
         User user = userService.getUser(dto.userId());
         Post post = getPost(id);
         post.updatePost(user, dto.content(), dto.state());
@@ -47,7 +51,7 @@ public class PostService {
         User user = userService.getUser(dto.userId());
         Post post = getPost(dto.targetId());
 
-        if(likeRepository.checkLike(post, user)) {
+        if (likeRepository.checkLike(post, user)) {
             return;
         }
 
@@ -59,7 +63,7 @@ public class PostService {
         User user = userService.getUser(dto.userId());
         Post post = getPost(dto.targetId());
 
-        if(likeRepository.checkLike(post, user)) {
+        if (likeRepository.checkLike(post, user)) {
             post.unlike(user);
             likeRepository.unlike(post, user);
         }
