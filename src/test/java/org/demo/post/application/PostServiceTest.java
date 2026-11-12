@@ -3,6 +3,7 @@ package org.demo.post.application;
 import org.demo.fake.FakeObjectFactory;
 import org.demo.post.application.dto.CreatePostRequestDto;
 import org.demo.post.application.dto.LikeRequestDto;
+import org.demo.post.application.dto.UpdatePostRequestDto;
 import org.demo.post.domain.Post;
 import org.demo.post.domain.content.PostPublicationState;
 import org.demo.user.application.UserService;
@@ -27,7 +28,7 @@ class PostServiceTest extends PostApplicationTestTemplate{
 
         // when
         String updatedContent = "updated content";
-        CreatePostRequestDto updateDto = new CreatePostRequestDto(user.getId(), updatedContent, PostPublicationState.PUBLIC);
+        UpdatePostRequestDto updateDto = new UpdatePostRequestDto(user.getId(), updatedContent, PostPublicationState.PUBLIC);
         Post updatedPost = postService.updatePost(post.getId(), updateDto);
 
         // then

@@ -25,8 +25,8 @@ class CommentServiceTest extends PostApplicationTestTemplate{
         Comment comment = commentService.createComment(commentRequestDto);
 
         // when
-        UpdateCommentRequestDto dto = new UpdateCommentRequestDto(comment.getId(), user.getId(), "updated content");
-        Comment updatedComment = commentService.updateComment(dto);
+        UpdateCommentRequestDto dto = new UpdateCommentRequestDto(user.getId(), "updated content");
+        Comment updatedComment = commentService.updateComment(comment.getId(), dto);
 
         // then
         assertEquals(comment.getId(), updatedComment.getId());

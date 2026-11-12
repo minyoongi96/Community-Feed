@@ -12,7 +12,7 @@ public class FakePostRepository implements PostRepository {
 
     @Override
     public Post save(Post post) {
-        if(post.getId() != null) {
+        if (post.getId() != null) {
             store.put(post.getId(), post);
             return post;
         }
@@ -25,7 +25,7 @@ public class FakePostRepository implements PostRepository {
     }
 
     @Override
-    public Optional<Post> findById(Long id) {
-        return Optional.ofNullable(store.get(id));
+    public Post findById(Long id) {
+        return store.get(id);
     }
 }

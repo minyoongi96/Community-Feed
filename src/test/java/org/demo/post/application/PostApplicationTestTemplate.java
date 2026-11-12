@@ -12,7 +12,7 @@ import org.demo.user.domain.User;
 public class PostApplicationTestTemplate {
     final UserService userService = FakeObjectFactory.getUserService();
     final PostService postService = FakeObjectFactory.getPostService();
-    final CommentSerivce commentService = FakeObjectFactory.getCommentSerivce();
+    final CommentService commentService = FakeObjectFactory.getCommentSerivce();
 
     final User user = userService.createUser(new CreateUserRequestDto("user1", ""));
     final User otherUser = userService.createUser(new CreateUserRequestDto("user2", ""));

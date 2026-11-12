@@ -1,6 +1,6 @@
 package org.demo.fake;
 
-import org.demo.post.application.CommentSerivce;
+import org.demo.post.application.CommentService;
 import org.demo.post.application.Interface.CommentRepository;
 import org.demo.post.application.Interface.LikeRepository;
 import org.demo.post.application.Interface.PostRepository;
@@ -26,7 +26,7 @@ public class FakeObjectFactory {
     private static final UserService userService = new UserService(fakeUserRepository);
     private static final UserRelationService userRelationService = new UserRelationService(userService, fakeUserRelationRepository);
     private static final PostService postService = new PostService(fakePostRepository, fakeLikeRepository, userService);
-    private static final CommentSerivce commentSerivce = new CommentSerivce(fakeCommentRepository, userService, postService, fakeLikeRepository);
+    private static final CommentService COMMENT_SERVICE = new CommentService(fakeCommentRepository, userService, postService, fakeLikeRepository);
 
     private FakeObjectFactory() {
 
@@ -41,7 +41,7 @@ public class FakeObjectFactory {
     public static PostService getPostService() {
         return postService;
     }
-    public static CommentSerivce getCommentSerivce() {
-        return commentSerivce;
+    public static CommentService getCommentSerivce() {
+        return COMMENT_SERVICE;
     }
 }
