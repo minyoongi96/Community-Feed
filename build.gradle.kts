@@ -22,8 +22,8 @@ dependencies {
     runtimeOnly("com.mysql:mysql-connector-j")
 
     // querydsl
-    implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
-    annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jakarta")
+    implementation("io.github.openfeign.querydsl:querydsl-jpa:6.10.1")
+    annotationProcessor("io.github.openfeign.querydsl:querydsl-apt:6.10.1:jpa")
     annotationProcessor("jakarta.annotation:jakarta.annotation-api")
     annotationProcessor("jakarta.persistence:jakarta.persistence-api")
 
