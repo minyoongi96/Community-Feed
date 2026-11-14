@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.demo.post.domain.Post;
-import org.demo.user.domain.User;
 
 @Entity
 @Table(name = "community_user_post_queue")

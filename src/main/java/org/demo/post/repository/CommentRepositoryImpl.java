@@ -10,8 +10,6 @@ import org.demo.post.repository.jpa.JpaCommentRepository;
 import org.demo.post.repository.jpa.JpaPostRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 @RequiredArgsConstructor
 public class CommentRepositoryImpl implements CommentRepository {

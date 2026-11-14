@@ -3,7 +3,6 @@ package org.demo.user.repository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.demo.post.repository.jpa.JpaUserPostQueueRepository;
 import org.demo.post.repository.post_queue.UserPostQueueCommandRepository;
 import org.demo.user.application.Interface.UserRelationRepository;
 import org.demo.user.domain.User;
