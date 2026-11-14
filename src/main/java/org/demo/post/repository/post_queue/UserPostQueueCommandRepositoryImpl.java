@@ -1,5 +1,6 @@
 package org.demo.post.repository.post_queue;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.demo.post.repository.entity.post.PostEntity;
 import org.demo.post.repository.entity.post.UserPostQueueEntity;
@@ -20,6 +21,7 @@ public class UserPostQueueCommandRepositoryImpl implements UserPostQueueCommandR
     private final JpaUserPostQueueRepository jpaUserPostQueueRepository;
 
     @Override
+    @Transactional
     public void publishPost(PostEntity postEntity) {
         UserEntity userEntity = postEntity.getAuthor();
         List<Long> followerIdList = jpaUserRelationRepository.findFollowers(userEntity.getId());
@@ -31,6 +33,7 @@ public class UserPostQueueCommandRepositoryImpl implements UserPostQueueCommandR
     }
 
     @Override
+    @Transactional
     public void saveFollowPost(Long userId, Long targetId) {
         List<Long> postIdList = jpaPostRepository.findAllIdsByAuthorId(targetId);
         List<UserPostQueueEntity> userPostQueueEntityList = postIdList.stream()
@@ -41,6 +44,7 @@ public class UserPostQueueCommandRepositoryImpl implements UserPostQueueCommandR
     }
 
     @Override
+    @Transactional
     public void deleteUnfollowPost(Long userId, Long targetId) {
         jpaUserPostQueueRepository.deleteAllByUserIdAndAuthorId(userId, targetId);
     }
