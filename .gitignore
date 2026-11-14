@@ -7,6 +7,9 @@ build/
 # application.yml
 src/main/resources/application.yml
 
+# docker-compose
+docker-compose.yml
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
