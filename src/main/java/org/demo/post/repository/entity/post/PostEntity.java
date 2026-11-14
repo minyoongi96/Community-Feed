@@ -10,6 +10,7 @@ import org.demo.post.domain.Post;
 import org.demo.post.domain.content.PostContent;
 import org.demo.post.domain.content.PostPublicationState;
 import org.demo.user.repository.entity.UserEntity;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "community_post")
@@ -31,6 +32,9 @@ public class PostEntity extends TimeBaseEntity {
 
     @Convert(converter = PostPublicationStateConverter.class)
     private PostPublicationState state;
+
+    @ColumnDefault("0")
+    private int commentCount;
 
     public PostEntity(Post post) {
         this.id = post.getId();
