@@ -1,5 +1,6 @@
 package org.demo.post.repository.post_queue;
 
+import org.demo.post.ui.dto.GetContentResponseDto;
 import org.demo.post.ui.dto.GetPostContentResponseDto;
 
 import java.util.List;
@@ -7,4 +8,6 @@ import java.util.List;
 public interface UserPostQueueQueryRepository {
 
     List<GetPostContentResponseDto> getPostContentList(Long userId, Long lastPostId);
+
+    List<GetContentResponseDto> getCommentContentList(Long userId, Long postId);
 }

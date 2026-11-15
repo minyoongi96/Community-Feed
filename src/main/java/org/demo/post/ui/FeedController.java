@@ -3,6 +3,7 @@ package org.demo.post.ui;
 import lombok.RequiredArgsConstructor;
 import org.demo.common.ui.Response;
 import org.demo.post.repository.post_queue.UserPostQueueQueryRepository;
+import org.demo.post.ui.dto.GetContentResponseDto;
 import org.demo.post.ui.dto.GetPostContentResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,13 @@ public class FeedController {
     @GetMapping("/{userId}")
     public Response<List<GetPostContentResponseDto>> getPostFeed(@PathVariable(name = "userId") Long userId, Long lastPostId) {
         List<GetPostContentResponseDto> result = queueQueryRepository.getPostContentList(userId, lastPostId);
+        return Response.ok(result);
+    }
+
+    @GetMapping("/{userId}/{postId}")
+    public Response<List<GetContentResponseDto>> getCommentList(@PathVariable(name = "userId") Long userId,
+                                                                @PathVariable(name = "postId") Long postId) {
+        List<GetContentResponseDto> result = queueQueryRepository.getCommentContentList(userId, postId);
         return Response.ok(result);
     }
 }
