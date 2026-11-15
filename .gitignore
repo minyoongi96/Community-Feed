@@ -7,6 +7,9 @@ build/
 # application.yml
 src/main/resources/application.yml
 
+# dataSources.xml
+.idea/dataSources.xml
+
 # docker-compose
 docker-compose.yml
 
