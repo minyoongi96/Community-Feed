@@ -43,8 +43,8 @@ public class UserPostQueueQueryRepositoryImpl implements UserPostQueueQueryRepos
                         likeEntity.isNotNull().as("isLikedByMe")
                 ))
                 .from(userPostQueueEntity)
-                .join(userEntity).on(userPostQueueEntity.userId.eq(userEntity.id))
                 .join(postEntity).on(userPostQueueEntity.postId.eq(postEntity.id))
+                .join(userEntity).on(userPostQueueEntity.authorId.eq(userEntity.id))
                 .leftJoin(likeEntity).on(hasLikePost(userId))
                 .where(
                         userPostQueueEntity.userId.eq(userId),
