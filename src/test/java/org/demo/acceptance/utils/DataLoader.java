@@ -12,7 +12,7 @@ import static org.demo.acceptance.steps.UserAcceptanceSteps.followUser;
 @Component
 public class DataLoader {
 
-    public void loadData(){
+    public void loadData() {
         CreateUserRequestDto dto1 = new CreateUserRequestDto("test_user1", "");
         CreateUserRequestDto dto2 = new CreateUserRequestDto("test_user2", "");
         CreateUserRequestDto dto3 = new CreateUserRequestDto("test_user3", "");
