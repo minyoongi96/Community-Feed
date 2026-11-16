@@ -1,7 +1,5 @@
 package org.demo.acceptance.utils;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import org.demo.user.application.dto.CreateUserRequestDto;
 import org.demo.user.application.dto.FollowUserRequestDto;
 import org.springframework.stereotype.Component;
