@@ -47,21 +47,6 @@ tasks.test {
 /*
  * QueryDSL Build Options
  */
-//val querydslDir = "${layout.projectDirectory}/build/generated/querydsl"
-//
-//sourceSets {
-//    getByName("main").java.srcDirs(querydslDir)
-//}
-//
-//tasks.withType<JavaCompile> {
-//    options.generatedSourceOutputDirectory = file(querydslDir)
-//}
-//
-//tasks.named("clean") {
-//    doLast {
-//        file(querydslDir).deleteRecursively()
-//    }
-//}
 val querydslDir = layout.buildDirectory.dir("generated/querydsl").get().asFile
 
 sourceSets {
