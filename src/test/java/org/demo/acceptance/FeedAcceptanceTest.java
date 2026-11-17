@@ -13,7 +13,7 @@ import static org.demo.acceptance.steps.FeedAcceptanceSteps.requestCreatePost;
 import static org.demo.acceptance.steps.FeedAcceptanceSteps.requestFeed;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FeedAcceptanceTest extends AcceptanceTestTemplate {
+class FeedAcceptanceTest extends AcceptanceTestTemplate {
     /**
      * User1 --- follow ---> User2
      * User1 --- follow ---> User3
