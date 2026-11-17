@@ -24,11 +24,4 @@ public class FeedController {
         List<GetPostContentResponseDto> result = queueQueryRepository.getPostContentList(userId, lastPostId);
         return Response.ok(result);
     }
-
-    @GetMapping("/{userId}/{postId}")
-    public Response<List<GetContentResponseDto>> getCommentList(@PathVariable(name = "userId") Long userId,
-                                                                @PathVariable(name = "postId") Long postId) {
-        List<GetContentResponseDto> result = queueQueryRepository.getCommentContentList(userId, postId);
-        return Response.ok(result);
-    }
 }

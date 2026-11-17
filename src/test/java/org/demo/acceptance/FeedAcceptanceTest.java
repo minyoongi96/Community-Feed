@@ -49,23 +49,4 @@ public class FeedAcceptanceTest extends AcceptanceTestTemplate {
      * User1 create 1 Comment at Post1
      * User2 Get 1 Comment From Post1
      */
-    @Test
-    void givenUser1CreateCommentAtPost1_whenUser2RequestComments_thenUser2CanGetCommentFromPost1() {
-        // given
-        Long user1Id = 1L;
-        Long user2Id = 2L;
-
-        CreatePostRequestDto createPostRequestDto = new CreatePostRequestDto(user2Id, "user1 can get this post", PostPublicationState.PUBLIC);
-        Long createdPostId = requestCreatePost(createPostRequestDto);
-
-        CreateCommentRequestDto createCommentRequestDto = new CreateCommentRequestDto(createdPostId, user1Id, "this is a user1's test comment");
-        Long createdCommentId = requestCreateComment(createCommentRequestDto);
-
-        // when
-        List<GetContentResponseDto> result = requestComment(user2Id, createdPostId);
-
-        // then
-        assertEquals(1, result.size());
-        assertEquals(createdCommentId, result.get(0).getId());
-    }
 }

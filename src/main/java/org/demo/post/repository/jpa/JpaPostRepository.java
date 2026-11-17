@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface JpaPostRepository extends JpaRepository<PostEntity, Long> {
 
-    @Query(value = "select p.id from PostEntity p where p.author.id = :authorId")
-    List<Long> findAllIdsByAuthorId(Long authorId);
+    @Query(value = "select p from PostEntity p where p.author.id = :authorId")
+    List<PostEntity> findAllByAuthorId(Long authorId);
 
     @Modifying
     @Query(value = "UPDATE PostEntity p " +
