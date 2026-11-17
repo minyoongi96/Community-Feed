@@ -1,6 +1,5 @@
-package org.demo.auth;
+package org.demo.auth.domain;
 
-import org.demo.auth.domain.Email;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
