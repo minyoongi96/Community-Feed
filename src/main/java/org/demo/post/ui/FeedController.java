@@ -3,7 +3,6 @@ package org.demo.post.ui;
 import lombok.RequiredArgsConstructor;
 import org.demo.common.ui.Response;
 import org.demo.post.repository.post_queue.UserPostQueueQueryRepository;
-import org.demo.post.ui.dto.GetContentResponseDto;
 import org.demo.post.ui.dto.GetPostContentResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

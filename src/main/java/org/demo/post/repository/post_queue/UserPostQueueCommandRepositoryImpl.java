@@ -3,9 +3,7 @@ package org.demo.post.repository.post_queue;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.demo.post.repository.entity.post.PostEntity;
-import org.demo.post.repository.entity.post.UserPostQueueEntity;
 import org.demo.post.repository.jpa.JpaPostRepository;
-import org.demo.post.repository.jpa.JpaUserPostQueueRepository;
 import org.demo.user.repository.Jpa.JpaUserRelationRepository;
 import org.demo.user.repository.entity.UserEntity;
 import org.springframework.stereotype.Repository;
@@ -14,7 +12,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class UserPostQueueCommandRepositoryImpl implements UserPostQueueCommandRepository{
+public class UserPostQueueCommandRepositoryImpl implements UserPostQueueCommandRepository {
 
     private final JpaPostRepository jpaPostRepository;
     private final JpaUserRelationRepository jpaUserRelationRepository;
@@ -43,7 +41,7 @@ public class UserPostQueueCommandRepositoryImpl implements UserPostQueueCommandR
 //                .toList();
 //
 //        jpaUserPostQueueRepository.saveAll(userPostQueueEntityList);
-         userPostQueueRedisRepository.publishPostListToFollowerUser(postEntityList, userId);
+        userPostQueueRedisRepository.publishPostListToFollowerUser(postEntityList, userId);
     }
 
     @Override

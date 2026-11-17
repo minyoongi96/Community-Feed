@@ -1,6 +1,5 @@
 package org.demo.post.repository.post_queue;
 
-import org.demo.post.ui.dto.GetContentResponseDto;
 import org.demo.post.ui.dto.GetPostContentResponseDto;
 
 import java.util.List;

@@ -1,17 +1,16 @@
 package org.demo.acceptance;
 
 import org.demo.acceptance.utils.AcceptanceTestTemplate;
-import org.demo.post.application.dto.CreateCommentRequestDto;
 import org.demo.post.application.dto.CreatePostRequestDto;
 import org.demo.post.domain.content.PostPublicationState;
-import org.demo.post.ui.dto.GetContentResponseDto;
 import org.demo.post.ui.dto.GetPostContentResponseDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.demo.acceptance.steps.FeedAcceptanceSteps.*;
+import static org.demo.acceptance.steps.FeedAcceptanceSteps.requestCreatePost;
+import static org.demo.acceptance.steps.FeedAcceptanceSteps.requestFeed;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FeedAcceptanceTest extends AcceptanceTestTemplate {

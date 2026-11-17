@@ -1,6 +1,5 @@
 package org.demo.post.repository;
 
-import org.demo.post.repository.entity.comment.CommentEntity;
 import org.demo.post.repository.entity.post.PostEntity;
 import org.demo.post.repository.post_queue.UserPostQueueRedisRepository;
 import org.springframework.context.annotation.Profile;
@@ -36,7 +35,7 @@ public class FakeUserPostQueueRedisRepository implements UserPostQueueRedisRepos
 
     @Override
     public void deleteFeed(Long userId, Long authorId) {
-        if(queue.containsKey((userId))) {
+        if (queue.containsKey((userId))) {
             queue.get(userId).removeIf(post -> post.getAuthor().getId().equals(authorId));
         }
     }
