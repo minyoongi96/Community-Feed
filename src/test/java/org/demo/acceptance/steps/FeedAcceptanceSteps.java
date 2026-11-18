@@ -25,12 +25,13 @@ public class FeedAcceptanceSteps {
                 .getObject("value", Long.class);
     }
 
-    public static List<GetPostContentResponseDto> requestFeed(Long userId) {
+    public static List<GetPostContentResponseDto> requestFeed(String token) {
         return RestAssured
                 .given().log().all()
+                .header("Authorization", "Bearer " + token)
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .when()
-                .get("/feed/{userId}", userId)
+                .get("/feed")
                 .then().log().all()
                 .statusCode(HttpStatus.OK.value())
                 .extract()
@@ -38,29 +39,17 @@ public class FeedAcceptanceSteps {
                 .getList("value", GetPostContentResponseDto.class);
     }
 
-    public static Long requestCreateComment(CreateCommentRequestDto dto) {
+    public static Integer requestFeedCode(String token) {
         return RestAssured
                 .given().log().all()
-                .body(dto)
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .when()
-                .post("/comment")
-                .then().log().all()
-                .extract()
-                .jsonPath()
-                .getObject("value", Long.class);
-    }
-
-    public static List<GetContentResponseDto> requestComment(Long userId, Long postId) {
-        return RestAssured
-                .given().log().all()
+                .header("Authorization", "Bearer " + token)
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .when()
-                .get("/feed/{userId}/{postId}", userId, postId)
+                .get("/feed")
                 .then().log().all()
                 .statusCode(HttpStatus.OK.value())
                 .extract()
                 .jsonPath()
-                .getList("value", GetContentResponseDto.class);
+                .get("code");
     }
 }

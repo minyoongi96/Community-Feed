@@ -1,10 +1,13 @@
 package org.demo.acceptance.utils;
 
 import io.restassured.RestAssured;
+import org.demo.auth.application.dto.LoginRequestDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+
+import static org.demo.acceptance.steps.LoginAcceptanceSteps.requestLoginGetToken;
 
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -47,5 +50,9 @@ public class AcceptanceTestTemplate {
 
     protected void createUser(String email) {
         loader.createUser(email);
+    }
+
+    protected String login(String email) {
+        return requestLoginGetToken(new LoginRequestDto(email, "password"));
     }
 }

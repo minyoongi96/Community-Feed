@@ -1,6 +1,8 @@
 package org.demo.post.ui;
 
 import lombok.RequiredArgsConstructor;
+import org.demo.common.principal.AuthPrincipal;
+import org.demo.common.principal.UserPrincipal;
 import org.demo.common.ui.Response;
 import org.demo.post.repository.post_queue.UserPostQueueQueryRepository;
 import org.demo.post.ui.dto.GetPostContentResponseDto;
@@ -18,9 +20,9 @@ public class FeedController {
 
     private final UserPostQueueQueryRepository queueQueryRepository;
 
-    @GetMapping("/{userId}")
-    public Response<List<GetPostContentResponseDto>> getPostFeed(@PathVariable(name = "userId") Long userId, Long lastPostId) {
-        List<GetPostContentResponseDto> result = queueQueryRepository.getPostContentList(userId, lastPostId);
+    @GetMapping("")
+    public Response<List<GetPostContentResponseDto>> getPostFeed(@AuthPrincipal UserPrincipal userPrincipal, Long lastPostId) {
+        List<GetPostContentResponseDto> result = queueQueryRepository.getPostContentList(userPrincipal.getUserId(), lastPostId);
         return Response.ok(result);
     }
 }
