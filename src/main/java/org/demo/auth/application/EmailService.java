@@ -24,4 +24,9 @@ public class EmailService {
         // 인증 메일 발송
         emailSendRepository.sendEmail(email, token);
     }
+
+    public void verifyEmail(String email, String token) {
+        Email emailValue = Email.createEmail(email);
+        emailVerificationRepository.verifyEmail(emailValue, token);
+    }
 }
