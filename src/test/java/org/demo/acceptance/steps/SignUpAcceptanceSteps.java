@@ -5,6 +5,7 @@ import org.demo.auth.application.dto.SendEmailRequestDto;
 import org.springframework.http.MediaType;
 
 public class SignUpAcceptanceSteps {
+
     public static Integer requestSendEmail(SendEmailRequestDto dto) {
         return RestAssured
                 .given()
@@ -12,6 +13,19 @@ public class SignUpAcceptanceSteps {
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .when()
                 .post("/signup/send-verification-email")
+                .then()
+                .extract()
+                .jsonPath().get("code");
+    }
+
+    public static Integer requestVerifyEmail(String email, String token) {
+        return RestAssured
+                .given()
+                .queryParam("email", email)
+                .queryParam("token", token)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .get("/signup/verify-token")
                 .then()
                 .extract()
                 .jsonPath().get("code");

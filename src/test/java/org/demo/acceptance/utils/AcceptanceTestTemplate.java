@@ -30,7 +30,13 @@ public class AcceptanceTestTemplate {
         cleanUp.execute();
     }
 
+    // 이메일로 토큰 가져오기
     protected String getEmailToken(String email) {
         return loader.getEmailToken(email);
+    }
+
+    // 검증된 이메일인지 확인
+    protected boolean isEmailVerified(String email) {
+        return loader.isEmailVerified(email);
     }
 }
