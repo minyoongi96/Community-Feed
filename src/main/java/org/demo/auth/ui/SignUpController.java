@@ -1,6 +1,7 @@
 package org.demo.auth.ui;
 
 import lombok.RequiredArgsConstructor;
+import org.demo.auth.application.AuthService;
 import org.demo.auth.application.EmailService;
 import org.demo.auth.application.dto.CreateUserAuthRequestDto;
 import org.demo.auth.application.dto.SendEmailRequestDto;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class SignUpController {
 
     private final EmailService emailService;
+    private final AuthService authService;
 
     @PostMapping("/send-verification-email")
     public Response<Void> sendEmail(@RequestBody SendEmailRequestDto dto) {
@@ -27,7 +29,8 @@ public class SignUpController {
     }
 
     @PostMapping("/register")
-    public Response<Long> registaer(@RequestBody CreateUserAuthRequestDto dto) {
-        return Response.ok(1L);
+    public Response<Long> register(@RequestBody CreateUserAuthRequestDto dto) {
+        Long result = authService.registerUser(dto);
+        return Response.ok(result);
     }
 }
