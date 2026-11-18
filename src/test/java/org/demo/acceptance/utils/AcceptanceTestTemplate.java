@@ -30,7 +30,7 @@ public class AcceptanceTestTemplate {
         cleanUp.execute();
     }
 
-    // 이메일로 토큰 가져오기
+    // community_email_verification 테이블에서 이메일로 토큰 가져오기
     protected String getEmailToken(String email) {
         return loader.getEmailToken(email);
     }
@@ -38,5 +38,10 @@ public class AcceptanceTestTemplate {
     // 검증된 이메일인지 확인
     protected boolean isEmailVerified(String email) {
         return loader.isEmailVerified(email);
+    }
+
+    // user_auth 테이블에서 email로 userId 가져오기
+    protected Long getUserId(String email) {
+        return loader.getUserId(email);
     }
 }

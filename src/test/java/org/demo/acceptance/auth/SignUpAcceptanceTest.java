@@ -1,12 +1,12 @@
 package org.demo.acceptance.auth;
 
 import org.demo.acceptance.utils.AcceptanceTestTemplate;
+import org.demo.auth.application.dto.CreateUserAuthRequestDto;
 import org.demo.auth.application.dto.SendEmailRequestDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.demo.acceptance.steps.SignUpAcceptanceSteps.requestSendEmail;
-import static org.demo.acceptance.steps.SignUpAcceptanceSteps.requestVerifyEmail;
+import static org.demo.acceptance.steps.SignUpAcceptanceSteps.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SignUpAcceptanceTest extends AcceptanceTestTemplate {
@@ -96,6 +96,34 @@ class SignUpAcceptanceTest extends AcceptanceTestTemplate {
         Integer code = requestVerifyEmail("wrong email", "wrong token");
 
         // then
+        assertEquals(400, code);
+    }
+
+    @Test
+    void givenVerifiedEmail_whenRegister_thenUserRegistered() {
+        // given
+        requestSendEmail(new SendEmailRequestDto(email));
+        String token = getEmailToken(email);
+        requestVerifyEmail(email, token);
+
+        // when
+        CreateUserAuthRequestDto dto = new CreateUserAuthRequestDto(email, "1234", "USER", "test_user1", "");
+        Integer code = registerUser(dto);
+
+        // then
+        assertEquals(0, code);
+        Long userId = getUserId(email);
+        assertEquals(1L, userId);
+    }
+
+    @Test
+    void givenUnVerifiedEmail_whenRegister_thenThrowError() {
+        // given
+        requestSendEmail(new SendEmailRequestDto(email));
+
+        // when
+        CreateUserAuthRequestDto dto = new CreateUserAuthRequestDto(email, "1234", "USER", "test_user1", "");
+        Integer code = registerUser(dto);
         assertEquals(400, code);
     }
 }
