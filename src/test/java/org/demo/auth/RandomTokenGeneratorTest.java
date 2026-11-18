@@ -1,5 +1,6 @@
-package org.demo.auth.domain;
+package org.demo.auth;
 
+import org.demo.auth.domain.RandomTokenGenerator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
