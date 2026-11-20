@@ -1,5 +1,10 @@
 package org.demo.common.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Pageable {
 
     private int pageIndex;
