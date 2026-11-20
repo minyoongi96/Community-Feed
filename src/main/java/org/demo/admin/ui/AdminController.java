@@ -44,5 +44,16 @@ public class AdminController {
         return modelAndView;
     }
 
-    
+    @GetMapping("/posts")
+    public ModelAndView posts(GetPostTableRequestDto dto) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("posts");
+        GetTableListResponse<GetPostTableResponseDto> result = adminTableQueryRepository.getPostTableData(dto);
+        modelAndView.addObject("requestDto", dto);
+        modelAndView.addObject("postList", result.getTableData());
+        modelAndView.addObject("totalCount", result.getTotalCount());
+
+        return modelAndView;
+    }
 }
