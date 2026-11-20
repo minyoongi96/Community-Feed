@@ -8,6 +8,9 @@ import org.demo.common.domain.PositiveIntegerCounter;
 import org.demo.common.repository.entity.TimeBaseEntity;
 import org.demo.user.domain.User;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "community_user")
@@ -24,6 +27,10 @@ public class UserEntity extends TimeBaseEntity {
     private String profileImageUrl;
     private Integer followerCount;
     private Integer followingCount;
+
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDate regDate;
 
     public UserEntity(User user) {
         this.id = user.getId();
