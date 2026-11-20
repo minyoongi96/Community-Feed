@@ -9,7 +9,6 @@ public class RandomTokenGenerator {
     private static final SecureRandom random = new SecureRandom();
 
     private RandomTokenGenerator() {
-
     }
 
     public static String generateToken() {
@@ -18,7 +17,7 @@ public class RandomTokenGenerator {
         for (int i = 0; i < TOKEN_LENGTH; i++) {
             token.append(CHARACTERS.charAt(random.nextInt(CHARACTERS.length())));
         }
-        
+
         return token.toString();
     }
 }

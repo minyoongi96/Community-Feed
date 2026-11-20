@@ -23,6 +23,7 @@ public class Email {
         return this.email;
     }
 
+    // email 형식 확인
     private static boolean isNotValidEmailString(String email) {
         return email == null || email.isBlank() || !EMAIL_PATTERN.matcher(email).matches();
     }

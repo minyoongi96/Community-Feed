@@ -19,6 +19,7 @@ public class TokenProvider {
         this.key = Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 
+    // 토큰 생성
     public String createToken(Long userId, String role) {
         Claims claims = Jwts.claims()
                 .subject(userId.toString())
