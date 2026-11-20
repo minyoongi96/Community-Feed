@@ -28,6 +28,7 @@ public class UserAuthRepositoryImpl implements UserAuthRepository {
     }
 
     @Override
+    @Transactional
     public UserAuth loginUser(String email, String password) {
         UserAuthEntity userAuthEntity = jpaUserAuthRepository.findById(email)
                 .orElseThrow(() -> new IllegalArgumentException("로그인 정보가 존재하지 않습니다."));
@@ -37,6 +38,7 @@ public class UserAuthRepositoryImpl implements UserAuthRepository {
             throw new IllegalArgumentException("패스워드가 틀립니다.");
         }
 
+        userAuthEntity.updateLastLoginAt();
         return userAuth;
     }
 }
