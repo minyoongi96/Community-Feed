@@ -3,7 +3,7 @@ package org.demo.admin.repository;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.demo.admin.ui.dto.GetDailyRegisterResponseDto;
+import org.demo.admin.ui.dto.users.GetDailyRegisterResponseDto;
 import org.demo.admin.ui.query.UserStatsQueryRepository;
 import org.demo.common.TimeCalculator;
 import org.demo.user.repository.entity.QUserEntity;

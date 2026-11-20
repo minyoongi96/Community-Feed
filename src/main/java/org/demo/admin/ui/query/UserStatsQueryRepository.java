@@ -1,6 +1,6 @@
 package org.demo.admin.ui.query;
 
-import org.demo.admin.ui.dto.GetDailyRegisterResponseDto;
+import org.demo.admin.ui.dto.users.GetDailyRegisterResponseDto;
 
 import java.util.List;
 
