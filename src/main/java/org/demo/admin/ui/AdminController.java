@@ -2,6 +2,8 @@ package org.demo.admin.ui;
 
 import lombok.RequiredArgsConstructor;
 import org.demo.admin.ui.dto.GetTableListResponse;
+import org.demo.admin.ui.dto.posts.GetPostTableRequestDto;
+import org.demo.admin.ui.dto.posts.GetPostTableResponseDto;
 import org.demo.admin.ui.dto.users.GetUserTableRequestDto;
 import org.demo.admin.ui.dto.users.GetUserTableResponseDto;
 import org.demo.admin.ui.query.AdminTableQueryRepository;
@@ -41,4 +43,6 @@ public class AdminController {
 
         return modelAndView;
     }
+
+    
 }
