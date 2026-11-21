@@ -8,8 +8,8 @@ build/
 src/main/resources/application.yml
 src/main/resources/application-test.yml
 
-# dataSources.xml
-.idea/dataSources.xml
+# idea
+.idea
 
 # docker-compose
 docker-compose.yml
