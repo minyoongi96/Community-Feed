@@ -5,7 +5,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.demo.admin.ui.dto.users.GetDailyRegisterResponseDto;
 import org.demo.admin.ui.query.UserStatsQueryRepository;
-import org.demo.common.util.TimeCalculator;
+import org.demo.common.utils.TimeCalculator;
 import org.demo.user.repository.entity.QUserEntity;
 import org.springframework.stereotype.Repository;
 
