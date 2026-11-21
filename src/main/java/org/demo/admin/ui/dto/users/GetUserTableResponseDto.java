@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.demo.common.util.TimeCalculator;
+import org.demo.common.utils.TimeCalculator;
 
 import java.time.LocalDateTime;
 
