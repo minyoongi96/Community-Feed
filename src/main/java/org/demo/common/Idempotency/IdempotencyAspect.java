@@ -6,7 +6,9 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.demo.common.ui.Response;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
 
@@ -41,7 +43,7 @@ public class IdempotencyAspect {
                 return existing.getResponse();
             }
             // 아직 처리 중인 요청
-            throw new IllegalStateException("이미 처리 중인 요청입니다.");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "이미 처리 중인 요청입니다.");
         }
 
         try{
