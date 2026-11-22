@@ -1,9 +1,7 @@
 package org.demo.acceptance.steps;
 
 import io.restassured.RestAssured;
-import org.demo.post.application.dto.CreateCommentRequestDto;
 import org.demo.post.application.dto.CreatePostRequestDto;
-import org.demo.post.ui.dto.GetContentResponseDto;
 import org.demo.post.ui.dto.GetPostContentResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

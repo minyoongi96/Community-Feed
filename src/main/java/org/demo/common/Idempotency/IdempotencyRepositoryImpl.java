@@ -33,6 +33,7 @@ public class IdempotencyRepositoryImpl implements IdempotencyRepository {
                     Long.class
             );
 
+    // Redis 키 선점
     @Override
     public boolean acquire(String key, String token) {
         Boolean result = redisTemplate.opsForValue().setIfAbsent(
@@ -44,6 +45,7 @@ public class IdempotencyRepositoryImpl implements IdempotencyRepository {
         return Boolean.TRUE.equals(result);
     }
 
+    // 기존 요청의 처리 결과 조회
     @Override
     public Idempotency getByKey(String key) {
         String value = redisTemplate.opsForValue().get(PREFIX + key);

@@ -57,10 +57,9 @@ public class IdempotencyAspect {
 
             return result;
         } catch (Throwable e) {
-            // 5. 비즈니스 로직 실패 시 Redis 키 삭제
+            // 5. 예외 처리 : Redis 키 삭제
             idempotencyRepository.release(key, token);
             throw e;
         }
     }
-
 }
