@@ -84,6 +84,15 @@ class IdempotencyAcceptanceTest {
             // 첫 번째 요청이 처리 중인 상태에서 동일한 키로 요청
             var secondResponse = requestIdempotencyProcessing(key);
 
+            System.out.println("두 번째 요청 HTTP 상태: "
+                    + secondResponse.extract().statusCode());
+
+            System.out.println("두 번째 요청 응답: "
+                    + secondResponse.extract().asString());
+
+            System.out.println("현재 비즈니스 실행 횟수: "
+                    + getExecuteCount());
+
             // then
             // 실제 GlobalExceptionHandler에서 설정한 HTTP 상태 코드에 맞춰 검증
             secondResponse.statusCode(409);

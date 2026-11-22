@@ -14,9 +14,17 @@ public class IdempotencyTestController {
 
     private final AtomicInteger count = new AtomicInteger(0);
 
-    private final CountDownLatch processingStarted = new CountDownLatch(1);
-    private final CountDownLatch allowToFinish = new CountDownLatch(1);
+    private volatile CountDownLatch processingStarted = new CountDownLatch(1);
+    private volatile CountDownLatch allowToFinish = new CountDownLatch(1);
 
+    @PostMapping("/test/idempotency/reset")
+    public Response<Void> reset() {
+        count.set(0);
+        processingStarted = new CountDownLatch(1);
+        allowToFinish = new CountDownLatch(1);
+
+        return Response.ok(null);
+    }
 
     @Idempotent
     @PostMapping("/test/idempotency")
@@ -30,6 +38,7 @@ public class IdempotencyTestController {
         return Response.ok(count.get());
     }
 
+    @Idempotent
     @PostMapping("/test/idempotency/processing")
     public Response<Integer> processing() throws InterruptedException {
         int result = count.incrementAndGet();
@@ -42,12 +51,6 @@ public class IdempotencyTestController {
         }
 
         return Response.ok(result);
-    }
-
-    @PostMapping("/test/idempotency/reset")
-    public Response<Void> reset() {
-        count.set(0);
-        return Response.ok(null);
     }
 
     public boolean awaitProcessingStarted() throws InterruptedException {
