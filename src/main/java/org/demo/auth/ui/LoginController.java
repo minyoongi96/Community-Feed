@@ -19,6 +19,7 @@ public class LoginController {
 
     @PostMapping
     public Response<UserAccessTokenResponseDto> login(@RequestBody LoginRequestDto dto) {
+가
         return Response.ok(authService.login(dto));
     }
 }
