@@ -24,7 +24,7 @@ class LoginAcceptanceTest extends AcceptanceTestTemplate {
     void givenEmailAndPassword_whenLogin_thenReturnToken() {
 
         // given
-        LoginRequestDto dto = new LoginRequestDto(email, "password");
+        LoginRequestDto dto = new LoginRequestDto(email, "password", "fcmToken");
 
         // when
         String token = requestLoginGetToken(dto);
@@ -36,7 +36,7 @@ class LoginAcceptanceTest extends AcceptanceTestTemplate {
     @Test
     void givenEmailAndWrongPassword_whenLogin_thenReturnCodeNotZero() {
         // given
-        LoginRequestDto dto = new LoginRequestDto(email, "wrong_password");
+        LoginRequestDto dto = new LoginRequestDto(email, "wrong_password", "fcmToken");
 
         // when
         Integer code = requestLoginGetResponseCode(dto);
