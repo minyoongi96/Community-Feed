@@ -8,6 +8,9 @@ build/
 src/main/resources/application.yml
 src/main/resources/application-test.yml
 
+# Firebase
+src/main/resources/community-service-adminsdk.json
+
 # idea
 .idea
 
