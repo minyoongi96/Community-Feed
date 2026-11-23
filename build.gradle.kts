@@ -41,6 +41,9 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.13.0")
     runtimeOnly("io.jsonwebtoken:jjwt-gson:0.13.0")
 
+    //fcm
+    implementation("com.google.firebase:firebase-admin:9.12.0")
+
     // test
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
